@@ -23,6 +23,7 @@ class App extends Component {
     );
     if (isInContacts) {
       alert(`${contact.name} is already in contacts`);
+      return;
     }
 
     this.setState(prevState => ({
@@ -64,12 +65,12 @@ class App extends Component {
         ) : (
           <p>Your phonebook i empty. Please add your first contact.</p>
         )}
-        {this.state.contacts.length > 0 && (
+        {this.state.contacts.length > 0 ? (
           <ContactList
             contacts={visibleContacts}
             onRemoveContact={this.removeContact}
           />
-        )}
+        ) : null}
       </div>
     );
   }
